@@ -1,0 +1,82 @@
+/* Interfaces (to be used by Huff's keyword __FUNC_SIG */ 
+#define function updateHorseNumber(uint256) nonpayable returns()
+#define function getNumberOfHorses() view returns(uint256)
+
+#define constant NUMBER_OF_HORSES_STORAGE_SLOT = FREE_STORAGE_POINTER() // Slot 0 (atm) // Huff's keyword
+
+#define macro MAIN() = takes (0) returns(0) {
+    // calldata to call updateHorseNumber(uint256) -> 0xcdfead2e0000000000000000000000000000000000000000000000000000000000000000
+    // `huffc filename.huff -b` returns the binary always introduced by `60008060093d393df3` -> contract creation code
+
+    // No need to `PUSH#`, huff understand the intention here
+    
+    // Function Dispatcher:
+    0x00                // Stack: Top -> [0] <- Bottom 
+    calldataload        // [32 bytes from offset 0x00] = 0xcdfead2e0000000000000000000000000000000000000000000000000000(000000000000)
+    0xe0                // [0xe0, calldata(first32)]
+    shr                 // [funcSelector] = 0xcdfead2e
+    dup1                // [funcSelector, funcSelector] 
+    
+    // below line can be replaced by __FUNC_SIG(updateHorseNumber)
+    0xcdfead2e          // [0xcdfead2e, funcSelector, funcSelector]         
+    eq                  // [0/1, funcSelector]
+    updateJump          // [ProgramCounter, 0/1, funcSelector] 
+    jumpi               // [funcSelector]
+
+    // below line can be replaced by __FUNC_SIG(readHorseNumber)
+    0xe026c017          // [0xe026c017, funcSelector]                           
+    eq                  // [0/1] 
+    readJump            // [ProgramCounter, 0/1]
+    jumpi               // []
+
+    0x00                // [0x00]
+    0x00                // [0x00, 0x00]
+    revert              // []
+
+    updateJump:
+        SET_NUMBER_OF_HORSES()
+    
+    readJump:
+        GET_NUMBER_OF_HORSES()
+}
+
+#define macro SET_NUMBER_OF_HORSES() = takes (0) returns(0) {
+    0x04                                    // [0x04]
+    calldataload                            // [0x04, calldata(32 bytes from offset 0x04)] = parameters of the the function call
+    [NUMBER_OF_HORSES_STORAGE_SLOT]         // [0x00, 0x04, funcParameters]
+    sstore                                  // []
+    stop                                    // if no stop, the contract will continue to execute the next line and execute GET_NUMBER_OF_HORSES()
+}
+
+#define macro GET_NUMBER_OF_HORSES() = takes (0) returns(0) {
+    [NUMBER_OF_HORSES_STORAGE_SLOT]         // [0x00]
+    sload                                   // [valueSlot0]
+    0x00                                    // [0x00, valueSlot0]
+    mstore                                  // []               // Memory: [valueSlot0]
+    0x20                                    // [0x20]           // Memory: [valueSlot0]
+    0x00                                    // [0x00, 0x20]     // Memory: [valueSlot0]
+    return                                  // []               // Memory: []
+}
+
+
+////// Optimized (code should be written like this) //////
+
+#define macro OPTIMIZED() = takes (0) returns(0) {
+    // Extract function selector from calldata:
+    0x00 calldataload 0xe0 shr dup1                 
+    
+    // Calling updateHoreNumber?
+    0xcdfead2e eq updateJump jumpi
+
+    // Calling getNumberOfHorses?
+    0xe026c017 eq readJump jumpi
+
+    // Revert if function selector is not recognized
+    0x00 0x00 revert
+
+    updateJump:
+        SET_NUMBER_OF_HORSES()
+    
+    readJump:
+        GET_NUMBER_OF_HORSES()
+}
