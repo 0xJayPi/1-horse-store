@@ -16,8 +16,8 @@ abstract contract Base_TestV1 is Test {
         assertEq(horseStore.readNumberOfHorses(), 0);
     }
 
-    function testWriteValue() external {
-        horseStore.updateHorseNumber(5);
-        assertEq(horseStore.readNumberOfHorses(), 5);
+    function testWriteValue(uint256 numberOfHorses) external {
+        horseStore.updateHorseNumber(numberOfHorses);
+        assertEq(horseStore.readNumberOfHorses(), numberOfHorses);
     }
 }
