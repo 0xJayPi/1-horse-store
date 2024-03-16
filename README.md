@@ -1,6 +1,6 @@
 ## Huff and Yul Deep Dives
 
-This project is a deep dive into the Huff and Yul languages. The goal is to acquire a deep understanding of Opcodes, the VM, and the languages themselves. This is a work in progress and will be updated as I continue my learning path.
+This project is a deep dive into the Huff and Yul languages. The goal is to acquire a further understanding of Opcodes, the VM, and the languages themselves. This is a work in progress and will be updated as I continue my learning path.
 
 ## Reference
 
@@ -15,13 +15,13 @@ This project is a deep dive into the Huff and Yul languages. The goal is to acqu
 ### v1 Simple Contract
 
 Main Contracts:
-- src/v1/HorseStore.sol
-- src/v1/HorseStore.huff
-- src/v1/HorseStore.sol
+- src/HorseStoreV1/HorseStore.sol
+- src/HorseStoreV1/HorseStore.huff
+- src/HorseStoreV1/HorseStore.sol
 - yul/HorseStoreYul.yul
 
 Test suit:
-- test/v1
+- test/HorseStoreV
 
 Opcodes breakdown:
 Breakdown of the opcodes used in src/v1/HorseStore.sol
@@ -29,11 +29,11 @@ Breakdown of the opcodes used in src/v1/HorseStore.sol
 
 ### v2 More Complex Contract
 Main Contracts:
-- src/v2/HorseStore.sol
-- src/v2/HorseStore.huff
+- src/HorseStoreV2/HorseStore.sol
+- src/HorseStoreV2/HorseStore.huff
 
 Test suit:
-- test/v2
+- test/HorseStoreV2
 
 ## ToDo
 - [ ] [Huff official tutorials](https://docs.huff.sh/tutorial/overview/#introduction)

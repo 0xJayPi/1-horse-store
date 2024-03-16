@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.20;
 
-import "../../src/v1/HorseStore.sol";
+import "../../src/HorseStoreV1/HorseStore.sol";
 import "forge-std/Test.sol";
 import {IHorseStore} from "./IHorseStore.sol";
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import {HorseStore} from "../../src/v2/HorseStore.sol";
+import {HorseStore} from "../../src/HorseStoreV2/HorseStore.sol";
 import {Test, console2} from "forge-std/Test.sol";
 
 abstract contract Base_TestV2 is Test {
