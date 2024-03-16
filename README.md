@@ -1,66 +1,39 @@
-## Foundry
+## Huff and Yul Deep Dives
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project is a deep dive into the Huff and Yul languages. The goal is to acquire a deep understanding of Opcodes, the VM, and the languages themselves. This is a work in progress and will be updated as I continue my learning path.
 
-Foundry consists of:
+## Reference
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- [EVM Opcodes & Solidity Gas MAstery Tutorial](https://youtu.be/Yn58Jmkf2ow?si=aFmKUmrnXKDU6_Vm)
+- [EVM Opcodes](https://www.evm.codes/) 
+- [EVM Playground](https://www.evm.codes/playground)
+- [The Huff Docs](https://docs.huff.sh/)
+- [Yul](https://docs.soliditylang.org/en/latest/yul.html)
 
-## Documentation
+## Codebase
 
-https://book.getfoundry.sh/
+### v1 Simple Contract
 
-## Usage
+Main Contracts:
+- src/v1/HorseStore.sol
+- src/v1/HorseStore.huff
+- src/v1/HorseStore.sol
+- yul/HorseStoreYul.yul
 
-### Build
+Test suit:
+- test/v1
 
-```shell
-$ forge build
-```
+Opcodes breakdown:
+Breakdown of the opcodes used in src/v1/HorseStore.sol
+- breakdowns/solc-breakdowns
 
-### Test
+### v2 More Complex Contract
+Main Contracts:
+- src/v2/HorseStore.sol
+- src/v2/HorseStore.huff
 
-```shell
-$ forge test
-```
+Test suit:
+- test/v2
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## ToDo
+- [ ] [Huff official tutorials](https://docs.huff.sh/tutorial/overview/#introduction)
