@@ -3,7 +3,7 @@
 pragma solidity 0.8.20;
 
 import {Base_TestV1, IHorseStore} from "./Base_TestV1.t.sol";
-import {HorseStoreYul} from "../../src/HorseStoreYul.sol";
+import {HorseStoreYul} from "../../src/v1/HorseStoreYul.sol";
 
 contract HoreStoreYull is Base_TestV1 {
     function setUp() external override {

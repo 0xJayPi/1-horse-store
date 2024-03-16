@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 /* Interfaces (to be used by Huff's keyword __FUNC_SIG */ 
 #define function updateHorseNumber(uint256) nonpayable returns()
 #define function getNumberOfHorses() view returns(uint256)
