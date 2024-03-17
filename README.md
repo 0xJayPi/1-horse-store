@@ -4,7 +4,7 @@ This project is a deep dive into the Huff and Yul languages. The goal is to acqu
 
 ## Reference
 
-- [EVM Opcodes & Solidity Gas MAstery Tutorial](https://youtu.be/Yn58Jmkf2ow?si=aFmKUmrnXKDU6_Vm)
+- [EVM Opcodes & Solidity Gas Mastery Tutorial](https://youtu.be/Yn58Jmkf2ow?si=aFmKUmrnXKDU6_Vm)
 - [EVM Opcodes](https://www.evm.codes/) 
 - [EVM Playground](https://www.evm.codes/playground)
 - [The Huff Docs](https://docs.huff.sh/)
